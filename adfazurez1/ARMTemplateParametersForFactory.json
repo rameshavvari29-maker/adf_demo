@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfazurez1"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://rameshstorage1.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "rameshsql.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "free-sql-db-8636760"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "ramesh"
+		},
+		"HttpServer1_properties_typeProperties_url": {
+			"value": "https://dummyjson.com"
+		},
+		"HttpServer2_properties_typeProperties_url": {
+			"value": "https://dummyjson.com"
+		},
+		"customerhttp_properties_typeProperties_url": {
+			"value": "https://dummyjson.com"
+		},
+		"first_http_randomuser_properties_typeProperties_url": {
+			"value": "https://randomuser.me"
+		},
+		"sorce_customer_properties_typeProperties_url": {
+			"value": "https://dummyjson.com"
+		}
+	}
+}
