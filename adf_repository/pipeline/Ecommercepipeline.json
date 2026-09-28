@@ -1,0 +1,1055 @@
+{
+	"name": "Ecommercepipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data2",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy data3",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "['id']"
+								},
+								"sink": {
+									"name": "id"
+								}
+							},
+							{
+								"source": {
+									"path": "['title']"
+								},
+								"sink": {
+									"name": "title"
+								}
+							},
+							{
+								"source": {
+									"path": "['description']"
+								},
+								"sink": {
+									"name": "description"
+								}
+							},
+							{
+								"source": {
+									"path": "['category']"
+								},
+								"sink": {
+									"name": "category"
+								}
+							},
+							{
+								"source": {
+									"path": "['price']"
+								},
+								"sink": {
+									"name": "price"
+								}
+							},
+							{
+								"source": {
+									"path": "['discountPercentage']"
+								},
+								"sink": {
+									"name": "discountPercentage"
+								}
+							},
+							{
+								"source": {
+									"path": "['rating']"
+								},
+								"sink": {
+									"name": "products'][0]['rating"
+								}
+							},
+							{
+								"source": {
+									"path": "['stock']"
+								},
+								"sink": {
+									"name": "stock"
+								}
+							},
+							{
+								"source": {
+									"path": "['tags'][0]"
+								},
+								"sink": {
+									"name": "products'][0]['tags']["
+								}
+							},
+							{
+								"source": {
+									"path": "['brand']"
+								},
+								"sink": {
+									"name": "brand"
+								}
+							},
+							{
+								"source": {
+									"path": "['sku']"
+								},
+								"sink": {
+									"name": "sku"
+								}
+							},
+							{
+								"source": {
+									"path": "['weight']"
+								},
+								"sink": {
+									"name": "weight"
+								}
+							},
+							{
+								"source": {
+									"path": "['dimensions']['width']"
+								},
+								"sink": {
+									"name": "width"
+								}
+							},
+							{
+								"source": {
+									"path": "['dimensions']['height']"
+								},
+								"sink": {
+									"name": "height"
+								}
+							},
+							{
+								"source": {
+									"path": "['dimensions']['depth']"
+								},
+								"sink": {
+									"name": "depth"
+								}
+							},
+							{
+								"source": {
+									"path": "['warrantyInformation']"
+								},
+								"sink": {
+									"name": "warrantyInformation"
+								}
+							},
+							{
+								"source": {
+									"path": "['shippingInformation']"
+								},
+								"sink": {
+									"name": "shippingInformation"
+								}
+							},
+							{
+								"source": {
+									"path": "['availabilityStatus']"
+								},
+								"sink": {
+									"name": "availabilityStatus"
+								}
+							},
+							{
+								"source": {
+									"path": "['reviews'][0]['rating']"
+								},
+								"sink": {
+									"name": "products'][0]['reviews'][0]['rating"
+								}
+							},
+							{
+								"source": {
+									"path": "['reviews'][0]['comment']"
+								},
+								"sink": {
+									"name": "comment"
+								}
+							},
+							{
+								"source": {
+									"path": "['reviews'][0]['date']"
+								},
+								"sink": {
+									"name": "date"
+								}
+							},
+							{
+								"source": {
+									"path": "['reviews'][0]['reviewerName']"
+								},
+								"sink": {
+									"name": "reviewerName"
+								}
+							},
+							{
+								"source": {
+									"path": "['reviews'][0]['reviewerEmail']"
+								},
+								"sink": {
+									"name": "reviewerEmail"
+								}
+							},
+							{
+								"source": {
+									"path": "['returnPolicy']"
+								},
+								"sink": {
+									"name": "returnPolicy"
+								}
+							},
+							{
+								"source": {
+									"path": "['minimumOrderQuantity']"
+								},
+								"sink": {
+									"name": "minimumOrderQuantity"
+								}
+							},
+							{
+								"source": {
+									"path": "['meta']['createdAt']"
+								},
+								"sink": {
+									"name": "createdAt"
+								}
+							},
+							{
+								"source": {
+									"path": "['meta']['updatedAt']"
+								},
+								"sink": {
+									"name": "updatedAt"
+								}
+							},
+							{
+								"source": {
+									"path": "['meta']['barcode']"
+								},
+								"sink": {
+									"name": "barcode"
+								}
+							},
+							{
+								"source": {
+									"path": "['meta']['qrCode']"
+								},
+								"sink": {
+									"name": "qrCode"
+								}
+							},
+							{
+								"source": {
+									"path": "['images'][0]"
+								},
+								"sink": {
+									"name": "products'][0]['images']["
+								}
+							},
+							{
+								"source": {
+									"path": "['thumbnail']"
+								},
+								"sink": {
+									"name": "thumbnail"
+								}
+							},
+							{
+								"source": {
+									"path": "$['total']"
+								},
+								"sink": {
+									"name": "total"
+								}
+							},
+							{
+								"source": {
+									"path": "$['skip']"
+								},
+								"sink": {
+									"name": "skip"
+								}
+							},
+							{
+								"source": {
+									"path": "$['limit']"
+								},
+								"sink": {
+									"name": "limit"
+								}
+							}
+						],
+						"collectionReference": "$['products']"
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "producthttp",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "productsink",
+						"type": "DatasetReference",
+						"parameters": {
+							"productfile": {
+								"value": "@concat('product_',formatDateTime(utcNow(),'yyyyMMdd_HHmmss'),'.csv')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy data3",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "['id']"
+								},
+								"sink": {
+									"name": "id"
+								}
+							},
+							{
+								"source": {
+									"path": "['firstName']"
+								},
+								"sink": {
+									"name": "firstName"
+								}
+							},
+							{
+								"source": {
+									"path": "['lastName']"
+								},
+								"sink": {
+									"name": "lastName"
+								}
+							},
+							{
+								"source": {
+									"path": "['maidenName']"
+								},
+								"sink": {
+									"name": "maidenName"
+								}
+							},
+							{
+								"source": {
+									"path": "['age']"
+								},
+								"sink": {
+									"name": "age"
+								}
+							},
+							{
+								"source": {
+									"path": "['gender']"
+								},
+								"sink": {
+									"name": "gender"
+								}
+							},
+							{
+								"source": {
+									"path": "['email']"
+								},
+								"sink": {
+									"name": "email"
+								}
+							},
+							{
+								"source": {
+									"path": "['phone']"
+								},
+								"sink": {
+									"name": "phone"
+								}
+							},
+							{
+								"source": {
+									"path": "['username']"
+								},
+								"sink": {
+									"name": "username"
+								}
+							},
+							{
+								"source": {
+									"path": "['password']"
+								},
+								"sink": {
+									"name": "password"
+								}
+							},
+							{
+								"source": {
+									"path": "['birthDate']"
+								},
+								"sink": {
+									"name": "birthDate"
+								}
+							},
+							{
+								"source": {
+									"path": "['image']"
+								},
+								"sink": {
+									"name": "image"
+								}
+							},
+							{
+								"source": {
+									"path": "['bloodGroup']"
+								},
+								"sink": {
+									"name": "bloodGroup"
+								}
+							},
+							{
+								"source": {
+									"path": "['height']"
+								},
+								"sink": {
+									"name": "height"
+								}
+							},
+							{
+								"source": {
+									"path": "['weight']"
+								},
+								"sink": {
+									"name": "weight"
+								}
+							},
+							{
+								"source": {
+									"path": "['eyeColor']"
+								},
+								"sink": {
+									"name": "eyeColor"
+								}
+							},
+							{
+								"source": {
+									"path": "['hair']['color']"
+								},
+								"sink": {
+									"name": "color"
+								}
+							},
+							{
+								"source": {
+									"path": "['hair']['type']"
+								},
+								"sink": {
+									"name": "type"
+								}
+							},
+							{
+								"source": {
+									"path": "['ip']"
+								},
+								"sink": {
+									"name": "ip"
+								}
+							},
+							{
+								"source": {
+									"path": "['address']['address']"
+								},
+								"sink": {
+									"name": "users'][0]['address_address"
+								}
+							},
+							{
+								"source": {
+									"path": "['address']['city']"
+								},
+								"sink": {
+									"name": "users'][0]['address_city"
+								}
+							},
+							{
+								"source": {
+									"path": "['address']['state']"
+								},
+								"sink": {
+									"name": "users'][0]['address_state"
+								}
+							},
+							{
+								"source": {
+									"path": "['address']['stateCode']"
+								},
+								"sink": {
+									"name": "users'][0]['address_stateCode"
+								}
+							},
+							{
+								"source": {
+									"path": "['address']['postalCode']"
+								},
+								"sink": {
+									"name": "users'][0]['address_postalCode"
+								}
+							},
+							{
+								"source": {
+									"path": "['address']['coordinates']['lat']"
+								},
+								"sink": {
+									"name": "users'][0]['address_coordinates_lat"
+								}
+							},
+							{
+								"source": {
+									"path": "['address']['coordinates']['lng']"
+								},
+								"sink": {
+									"name": "users'][0]['address_coordinates_lng"
+								}
+							},
+							{
+								"source": {
+									"path": "['address']['country']"
+								},
+								"sink": {
+									"name": "users'][0]['address_country"
+								}
+							},
+							{
+								"source": {
+									"path": "['macAddress']"
+								},
+								"sink": {
+									"name": "macAddress"
+								}
+							},
+							{
+								"source": {
+									"path": "['university']"
+								},
+								"sink": {
+									"name": "university"
+								}
+							},
+							{
+								"source": {
+									"path": "['bank']['cardExpire']"
+								},
+								"sink": {
+									"name": "cardExpire"
+								}
+							},
+							{
+								"source": {
+									"path": "['bank']['cardNumber']"
+								},
+								"sink": {
+									"name": "cardNumber"
+								}
+							},
+							{
+								"source": {
+									"path": "['bank']['cardType']"
+								},
+								"sink": {
+									"name": "cardType"
+								}
+							},
+							{
+								"source": {
+									"path": "['bank']['currency']"
+								},
+								"sink": {
+									"name": "currency"
+								}
+							},
+							{
+								"source": {
+									"path": "['bank']['iban']"
+								},
+								"sink": {
+									"name": "iban"
+								}
+							},
+							{
+								"source": {
+									"path": "['company']['department']"
+								},
+								"sink": {
+									"name": "department"
+								}
+							},
+							{
+								"source": {
+									"path": "['company']['name']"
+								},
+								"sink": {
+									"name": "name"
+								}
+							},
+							{
+								"source": {
+									"path": "['company']['title']"
+								},
+								"sink": {
+									"name": "title"
+								}
+							},
+							{
+								"source": {
+									"path": "['company']['address']['address']"
+								},
+								"sink": {
+									"name": "users'][0]['company_address_address"
+								}
+							},
+							{
+								"source": {
+									"path": "['company']['address']['city']"
+								},
+								"sink": {
+									"name": "users'][0]['company_address_city"
+								}
+							},
+							{
+								"source": {
+									"path": "['company']['address']['state']"
+								},
+								"sink": {
+									"name": "users'][0]['company_address_state"
+								}
+							},
+							{
+								"source": {
+									"path": "['company']['address']['stateCode']"
+								},
+								"sink": {
+									"name": "users'][0]['company_address_stateCode"
+								}
+							},
+							{
+								"source": {
+									"path": "['company']['address']['postalCode']"
+								},
+								"sink": {
+									"name": "users'][0]['company_address_postalCode"
+								}
+							},
+							{
+								"source": {
+									"path": "['company']['address']['coordinates']['lat']"
+								},
+								"sink": {
+									"name": "users'][0]['company_address_coordinates_lat"
+								}
+							},
+							{
+								"source": {
+									"path": "['company']['address']['coordinates']['lng']"
+								},
+								"sink": {
+									"name": "users'][0]['company_address_coordinates_lng"
+								}
+							},
+							{
+								"source": {
+									"path": "['company']['address']['country']"
+								},
+								"sink": {
+									"name": "users'][0]['company_address_country"
+								}
+							},
+							{
+								"source": {
+									"path": "['ein']"
+								},
+								"sink": {
+									"name": "ein"
+								}
+							},
+							{
+								"source": {
+									"path": "['ssn']"
+								},
+								"sink": {
+									"name": "ssn"
+								}
+							},
+							{
+								"source": {
+									"path": "['userAgent']"
+								},
+								"sink": {
+									"name": "userAgent"
+								}
+							},
+							{
+								"source": {
+									"path": "['crypto']['coin']"
+								},
+								"sink": {
+									"name": "coin"
+								}
+							},
+							{
+								"source": {
+									"path": "['crypto']['wallet']"
+								},
+								"sink": {
+									"name": "wallet"
+								}
+							},
+							{
+								"source": {
+									"path": "['crypto']['network']"
+								},
+								"sink": {
+									"name": "network"
+								}
+							},
+							{
+								"source": {
+									"path": "['role']"
+								},
+								"sink": {
+									"name": "role"
+								}
+							},
+							{
+								"source": {
+									"path": "$['total']"
+								},
+								"sink": {
+									"name": "total"
+								}
+							},
+							{
+								"source": {
+									"path": "$['skip']"
+								},
+								"sink": {
+									"name": "skip"
+								}
+							},
+							{
+								"source": {
+									"path": "$['limit']"
+								},
+								"sink": {
+									"name": "limit"
+								}
+							}
+						],
+						"collectionReference": "$['users']"
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Json2",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference",
+						"parameters": {
+							"userfile": {
+								"value": "@concat('user_',formatDateTime(utcNow(),'yyyyMMdd_HHmmss'),'.csv')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy data4",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy data2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "['id']"
+								},
+								"sink": {
+									"name": "carts'][0]['id"
+								}
+							},
+							{
+								"source": {
+									"path": "['products'][0]['id']"
+								},
+								"sink": {
+									"name": "carts'][0]['products'][0]['id"
+								}
+							},
+							{
+								"source": {
+									"path": "['products'][0]['title']"
+								},
+								"sink": {
+									"name": "title"
+								}
+							},
+							{
+								"source": {
+									"path": "['products'][0]['price']"
+								},
+								"sink": {
+									"name": "price"
+								}
+							},
+							{
+								"source": {
+									"path": "['products'][0]['quantity']"
+								},
+								"sink": {
+									"name": "quantity"
+								}
+							},
+							{
+								"source": {
+									"path": "['products'][0]['total']"
+								},
+								"sink": {
+									"name": "carts'][0]['products'][0]['total"
+								}
+							},
+							{
+								"source": {
+									"path": "['products'][0]['discountPercentage']"
+								},
+								"sink": {
+									"name": "discountPercentage"
+								}
+							},
+							{
+								"source": {
+									"path": "['products'][0]['discountedTotal']"
+								},
+								"sink": {
+									"name": "carts'][0]['products'][0]['discountedTotal"
+								}
+							},
+							{
+								"source": {
+									"path": "['products'][0]['thumbnail']"
+								},
+								"sink": {
+									"name": "thumbnail"
+								}
+							},
+							{
+								"source": {
+									"path": "['total']"
+								},
+								"sink": {
+									"name": "carts'][0]['total"
+								}
+							},
+							{
+								"source": {
+									"path": "['discountedTotal']"
+								},
+								"sink": {
+									"name": "carts'][0]['discountedTotal"
+								}
+							},
+							{
+								"source": {
+									"path": "['userId']"
+								},
+								"sink": {
+									"name": "userId"
+								}
+							},
+							{
+								"source": {
+									"path": "['totalProducts']"
+								},
+								"sink": {
+									"name": "totalProducts"
+								}
+							},
+							{
+								"source": {
+									"path": "['totalQuantity']"
+								},
+								"sink": {
+									"name": "totalQuantity"
+								}
+							},
+							{
+								"source": {
+									"path": "$['total']"
+								},
+								"sink": {
+									"name": "total"
+								}
+							},
+							{
+								"source": {
+									"path": "$['skip']"
+								},
+								"sink": {
+									"name": "skip"
+								}
+							},
+							{
+								"source": {
+									"path": "$['limit']"
+								},
+								"sink": {
+									"name": "limit"
+								}
+							}
+						],
+						"collectionReference": "$['carts']"
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "orderjson",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DelimitedText2",
+						"type": "DatasetReference",
+						"parameters": {
+							"order": {
+								"value": "@concat('order_',formatDateTime(utcNow(),'yyyyMMdd_HHmmss'),'.csv')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-09-09T15:12:39Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

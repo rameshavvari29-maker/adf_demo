@@ -1,0 +1,25 @@
+{
+	"name": "ecommercetrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Ecommercepipeline",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 40,
+				"startTime": "2026-09-09T15:14:00",
+				"endTime": "2026-09-30T12:14:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

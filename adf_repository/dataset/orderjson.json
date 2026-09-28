@@ -1,0 +1,19 @@
+{
+	"name": "orderjson",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServer2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "/carts"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

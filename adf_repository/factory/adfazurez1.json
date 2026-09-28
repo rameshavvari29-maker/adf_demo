@@ -1,0 +1,15 @@
+{
+	"name": "adfazurez1",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "704613ef-4017-49c6-81cd-75f39c81aa1a",
+		"tenantId": "f17d163a-02a0-4447-912e-694bba1735ba"
+	}
+}

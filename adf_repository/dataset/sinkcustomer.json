@@ -1,0 +1,30 @@
+{
+	"name": "sinkcustomer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"custfile": {
+				"type": "string",
+				"defaultValue": "@concat('cust_',fromDateTime('utcNow()','yyyyMMdd_HHmmss'),'.json')"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().custfile",
+					"type": "Expression"
+				},
+				"folderPath": "customers",
+				"fileSystem": "e-commerce"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

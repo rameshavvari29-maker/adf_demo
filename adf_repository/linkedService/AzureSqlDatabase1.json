@@ -1,0 +1,17 @@
+{
+	"name": "AzureSqlDatabase1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "rameshsql.database.windows.net",
+			"database": "free-sql-db-8636760",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "ramesh",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDAxNUQ0MDNELUU1NDYtNEI3QS05NDA0LTczRUUwNkQwRDIyMl8wNzJmZDhiMC1mOTUyLTRlMTUtYmNlYS1lNDUwOWEzNjg3OGMiDQp9"
+		}
+	}
+}
